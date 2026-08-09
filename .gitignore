@@ -1,0 +1,38 @@
+# Environment and Secrets (CRITICAL)
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+venv/
+.venv/
+env/
+*.egg-info/
+.coverage
+htmlcov/
+
+# Testing Artifacts & Reports
+test-results/
+playwright-report/
+blob-report/
+test-results*/
+
+# Frontend & Dependencies (Root mirror)
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# System & Editor Files
+.DS_Store
+Thumbs.db
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo

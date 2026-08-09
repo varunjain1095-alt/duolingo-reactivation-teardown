@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duolingo Reactivation Engine</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'app-bg': '#131f24',
+              'nav-bg': '#18262d',
+              'card-blue': '#89d8fb',
+              'card-blue-border': '#73c3e8',
+              'node-blue': '#58cc02',
+              'node-active-bg': '#58cc02',
+              'node-gray': '#37464f',
+              'node-gray-border': '#2c3940',
+              'text-gray': '#4b5563',
+              'flag-green': '#009246',
+              'flag-white': '#ffffff',
+              'flag-red': '#ce2b37',
+              'gem-blue': '#1cb0f6',
+              'heart-pink': '#ff4b4b',
+              'nav-active-bg': '#2b404d',
+              'nav-active-border': '#1cb0f6',
+              'nav-icon-orange': '#f89a2b',
+              'nav-icon-blue': '#1cb0f6',
+              'nav-icon-pink': '#ff4b4b',
+              'nav-icon-purple': '#c52ce9',
+              'duo-blue': '#28a8ef',
+              'duo-card-blue': '#49bdf3',
+              'duo-dark': '#1a2228',
+              'duo-dark-card': '#202931',
+              'duo-dark-border': '#37464f',
+              'duo-gray': '#77858f'
+            },
+            fontFamily: {
+              sans: ['"Nunito"', 'sans-serif'],
+            },
+            boxShadow: {
+              '3d': '0 4px 0 0 rgba(0,0,0,0.2)',
+              'node': '0 6px 0 0 rgba(0,0,0,0.2)',
+              'card': '0 4px 0 0 #73c3e8',
+              'nav-active': 'inset 0 0 0 2px #1cb0f6',
+              'duo-button': '0 4px 0 #e5e5e5',
+              'duo-card': '0 4px 0 rgba(0,0,0,0.2)'
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#131f24] text-white font-sans font-bold antialiased select-none">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

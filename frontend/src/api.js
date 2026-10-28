@@ -147,7 +147,11 @@ export const MOCK_PERSONA_PAYLOADS = {
  * Fetches reactivation evaluation from the FastAPI backend service (engine.py).
  * Architecture Section 6 single source of truth.
  */
-export async function fetchReactivationEvaluation(requestPayload, apiBaseUrl = "http://localhost:8000") {
+const DEFAULT_API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ??
+  (import.meta.env.PROD ? "" : "http://localhost:8000");
+
+export async function fetchReactivationEvaluation(requestPayload, apiBaseUrl = DEFAULT_API_BASE_URL) {
   try {
     const response = await fetch(`${apiBaseUrl}/api/v1/reactivation/evaluate`, {
       method: "POST",

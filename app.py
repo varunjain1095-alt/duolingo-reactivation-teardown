@@ -4,9 +4,11 @@ Exposes POST /api/v1/reactivation/evaluate returning ReactivationResponse Union 
 """
 
 import os
+from pathlib import Path
 from datetime import datetime, date, timezone
 from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 
 from engine import (
@@ -35,6 +37,7 @@ origins = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:5173
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[o.strip() for o in origins],
+    allow_origin_regex=r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -203,3 +206,9 @@ def evaluate_reactivation(request: EngineInputRequest):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Engine processing error: {str(e)}"
         )
+
+# Serve built React frontend if available (Production / Railway single-service deployment)
+FRONTEND_DIST = Path(__file__).resolve().parent / "frontend" / "dist"
+if FRONTEND_DIST.is_dir():
+    app.mount("/", StaticFiles(directory=str(FRONTEND_DIST), html=True), name="frontend")
+
